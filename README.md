@@ -71,3 +71,17 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## Configure landing page data endpoint
+
+The landing page now loads JSON data directly from:
+
+`$VITE_PROPERTY_API_BASE_URL/api/public/properties/by-kiosk/F7F71F04-3660-1C31-92FD-F229BFF2B8EF/frontend-data`
+
+If `VITE_PROPERTY_API_BASE_URL` is not set, it defaults to `http://103.230.158.111`.
+
+For local development against your local API server, run:
+
+```sh
+VITE_PROPERTY_API_BASE_URL=http://127.0.0.1:5000 npm run dev
+```
