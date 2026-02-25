@@ -31,6 +31,12 @@ const fetchFrontendData = async () => {
 
   if (!response.ok) {
     throw new Error(`Failed to fetch landing page data (${response.status}) from ${endpoint}.`);
+
+const fetchFrontendData = async () => {
+  const response = await fetch(endpoint);
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch landing page data (${response.status})`);
   }
 
   return response.json() as Promise<unknown>;
