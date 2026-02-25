@@ -71,3 +71,49 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## Configure landing page data endpoint
+
+The landing page requests:
+
+`/api/public/properties/by-kiosk/F7F71F04-3660-1C31-92FD-F229BFF2B8EF/frontend-data`
+
+### Local development (no CORS issues)
+
+Vite is configured to proxy `/api` to `http://127.0.0.1:5000`, so run:
+
+```sh
+npm run dev -- --host 127.0.0.1 --port 8080
+```
+
+This keeps browser requests same-origin (`127.0.0.1:8080`) while the dev server forwards them to your API.
+
+### Optional overrides
+
+If your local API is on a different host/port, change the Vite proxy target (recommended):
+
+```sh
+VITE_API_PROXY_TARGET=http://127.0.0.1:5001 npm run dev -- --host 127.0.0.1 --port 8080
+```
+
+If you intentionally want direct cross-origin calls (not recommended for local CORS), set:
+
+```sh
+VITE_PROPERTY_API_BASE_URL=http://103.230.158.111 npm run dev -- --host 127.0.0.1 --port 8080
+```
+
+
+## Landing page field mapping
+
+The landing page maps API fields into sections using common key aliases:
+
+- Heading: `property_title` / `title` / `name`
+- Address: `property_street`, `property_suburb`, `property_state`, `property_postcode`, `property_country`
+- Subtitle: `tagline` / `subtitle` / `short_description`
+- Overview text: `property_description` / `description` / `about` / `summary`
+- Features: `features` / `property_features` / `amenities` / `highlights`
+- Things to note: `house_rules` / `rules` / `things_to_note`
+- Gallery: `property_images` / `images` / `gallery`
+- Host: `host_name` / `owner_name` / `manager_name`
+
+This allows the page to render correctly even if payload keys vary slightly across environments.
