@@ -71,3 +71,27 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## Configure landing page data endpoint
+
+The landing page requests:
+
+`/api/public/properties/by-kiosk/F7F71F04-3660-1C31-92FD-F229BFF2B8EF/frontend-data`
+
+### Local development (no CORS issues)
+
+Vite is configured to proxy `/api` to `http://127.0.0.1:5000`, so run:
+
+```sh
+npm run dev -- --host 127.0.0.1 --port 8080
+```
+
+This keeps browser requests same-origin (`127.0.0.1:8080`) while the dev server forwards them to your API.
+
+### Optional override
+
+If you need to bypass the dev proxy and call an external API directly, set:
+
+```sh
+VITE_PROPERTY_API_BASE_URL=http://103.230.158.111 npm run dev -- --host 127.0.0.1 --port 8080
+```
