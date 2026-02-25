@@ -100,5 +100,20 @@ If you intentionally want direct cross-origin calls (not recommended for local C
 
 ```sh
 VITE_PROPERTY_API_BASE_URL=http://103.230.158.111 npm run dev -- --host 127.0.0.1 --port 8080
-
 ```
+
+
+## Landing page field mapping
+
+The landing page maps API fields into sections using common key aliases:
+
+- Heading: `property_title` / `title` / `name`
+- Address: `property_street`, `property_suburb`, `property_state`, `property_postcode`, `property_country`
+- Subtitle: `tagline` / `subtitle` / `short_description`
+- Overview text: `property_description` / `description` / `about` / `summary`
+- Features: `features` / `property_features` / `amenities` / `highlights`
+- Things to note: `house_rules` / `rules` / `things_to_note`
+- Gallery: `property_images` / `images` / `gallery`
+- Host: `host_name` / `owner_name` / `manager_name`
+
+This allows the page to render correctly even if payload keys vary slightly across environments.
