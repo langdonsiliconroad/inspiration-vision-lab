@@ -74,6 +74,28 @@ Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/c
 
 ## Configure landing page data endpoint
 
+<<<<<<< codex/use-json-data-for-landing-page-0c3vw4
+The landing page requests:
+
+`/api/public/properties/by-kiosk/F7F71F04-3660-1C31-92FD-F229BFF2B8EF/frontend-data`
+
+### Local development (no CORS issues)
+
+Vite is configured to proxy `/api` to `http://127.0.0.1:5000`, so run:
+
+```sh
+npm run dev -- --host 127.0.0.1 --port 8080
+```
+
+This keeps browser requests same-origin (`127.0.0.1:8080`) while the dev server forwards them to your API.
+
+### Optional override
+
+If you need to bypass the dev proxy and call an external API directly, set:
+
+```sh
+VITE_PROPERTY_API_BASE_URL=http://103.230.158.111 npm run dev -- --host 127.0.0.1 --port 8080
+=======
 The landing page now loads JSON data directly from:
 
 `$VITE_PROPERTY_API_BASE_URL/api/public/properties/by-kiosk/F7F71F04-3660-1C31-92FD-F229BFF2B8EF/frontend-data`
@@ -84,4 +106,5 @@ For local development against your local API server, run:
 
 ```sh
 VITE_PROPERTY_API_BASE_URL=http://127.0.0.1:5000 npm run dev
+>>>>>>> main
 ```

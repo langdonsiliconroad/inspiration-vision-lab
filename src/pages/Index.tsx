@@ -2,10 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 
 const KIOSK_ID = "F7F71F04-3660-1C31-92FD-F229BFF2B8EF";
 
+<<<<<<< codex/use-json-data-for-landing-page-0c3vw4
+const API_BASE_URL = (import.meta.env.VITE_PROPERTY_API_BASE_URL ?? "").replace(/\/$/, "");
+
+const endpointPath = `/api/public/properties/by-kiosk/${KIOSK_ID}/frontend-data`;
+const endpoint = API_BASE_URL ? `${API_BASE_URL}${endpointPath}` : endpointPath;
+=======
 const API_BASE_URL =
   import.meta.env.VITE_PROPERTY_API_BASE_URL ?? "http://103.230.158.111";
 
 const endpoint = `${API_BASE_URL}/api/public/properties/by-kiosk/${KIOSK_ID}/frontend-data`;
+>>>>>>> main
 
 const fetchFrontendData = async () => {
   const response = await fetch(endpoint);
